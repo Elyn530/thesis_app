@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+{% block Thesistitle %} thesis {% endblock %}
+
+{% block content %}
+  <h1>Thesis list</h1>
+  {% for thesis in posts %}
+  <h2><a href="{{ Thesislist.get_absolute_url }}">{{post.thesistitle}}</a></h2>
+    <p class="date">Published {{post.publish}} by {{ post.author}}</p>
+    {{ post.body | truncatewords:30 | linebreaks}}
+  {% endfor %}
+  {% include "Thesis/pagination.html" with page=posts %}
+{% endblock %}
